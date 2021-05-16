@@ -244,15 +244,15 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
         TTR <- sum(Sd2[2:nrow(Sd2), 'days_in_therapeutic_range']) / ttr_interval
       }}
     if(print_matrix1 == TRUE) {
-      print(S)
+      return(S)
     }
     if(print_matrix2 == TRUE) {
-      print(Sd2)
+      return(Sd2)
     }
     if(print_number_of_inr_values == TRUE){
       number_of_INR_values <- nrow(Sd1)
-      print(data.frame(TTR, number_of_INR_values))
+      return(data.frame(TTR, number_of_INR_values))
     }
     if(print_number_of_inr_values == FALSE){
-      print(TTR)
+      return(TTR)
     }}}
