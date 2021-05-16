@@ -1,0 +1,16 @@
+Package: ttrjl
+Title: Converts INR Values to TTR
+Version: 1.0
+Authors@R: 
+    person(given = "Joonas",
+           family = "Lehto",
+           role = c("aut", "cre"),
+           email = "jojuleh@utu.fi",
+           comment = c(ORCID = "0000-0002-6420-8607"))
+Description: This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.
+License: MIT + file LICENSE
+Imports: dplyr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
