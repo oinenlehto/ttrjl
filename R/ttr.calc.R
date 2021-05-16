@@ -120,6 +120,8 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
       TTR <- 999
     } else if(any(is.na(Sd1[, 'days_in_therapeutic_range']))) {
       TTR <- 999
+    } else if(nrow(Sd1) == 0) {
+      TTR <- 999
       # If day - ttr_interval == Sd1[1, time_variable] & day == Sd1[nrow(Sd1), time_variable]
     } else if(Sd1[nrow(Sd1), time_variable] == day & Sd1[1, time_variable] == day - ttr_interval) {
       TTR <- sum(Sd1[, 'days_in_therapeutic_range']) / ttr_interval
