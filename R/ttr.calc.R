@@ -156,7 +156,7 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
         if(Sd2[nrow(Sd2), 'days_out_of_range_on_low_end'] >= day - Sd2[nrow(Sd2) - 1, time_variable]) {
           Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- 0
         } else if(Sd2[nrow(Sd2), time_variable] - Sd2[nrow(Sd2), 'days_out_of_range_on_high_end'] > day) {
-          Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), 'days_out_of_range_on_low_end']
+          Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), 'days_out_of_range_on_low_end'] - Sd2[nrow(Sd2) - 1, time_variable]
         }}
       if(Sd1[1, 'rank'] == Sd2[1, 'rank']) {
         Sd2[1, 'days_in_therapeutic_range'] <- 0
@@ -249,7 +249,7 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
         if(Sd2[nrow(Sd2), 'days_out_of_range_on_low_end'] >= day - Sd2[nrow(Sd2) - 1, time_variable]) {
           Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- 0
         } else if(Sd2[nrow(Sd2), time_variable] - Sd2[nrow(Sd2), 'days_out_of_range_on_high_end'] > day) {
-          Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), 'days_out_of_range_on_low_end']
+          Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), 'days_out_of_range_on_low_end'] - Sd2[nrow(Sd2) - 1, time_variable]
         }}
       if(Sd1[1, 'rank'] != Sd2[1, 'rank']) {
         TTR <- sum(Sd2[2:nrow(Sd2), 'days_in_therapeutic_range']) / ttr_interval
