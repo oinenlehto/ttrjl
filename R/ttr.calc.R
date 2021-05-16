@@ -125,11 +125,15 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
       TTR <- sum(Sd1[, 'days_in_therapeutic_range']) / ttr_interval
       # If day - ttr_interval == Sd1[1, time_variable] & day != Sd1[nrow(Sd1), time_variable]
     } else if(Sd1[1, time_variable] == day - ttr_interval & Sd1[nrow(Sd1), time_variable] != day) {
-      if(Sd1[nrow(Sd1), 'rank'] == Sd2[nrow(Sd2), 'rank']  | is.na(Sd2[nrow(Sd2), 'days_in_therapeutic_range'])) {
+      if(Sd1[nrow(Sd1), 'rank'] == Sd2[nrow(Sd2), 'rank']) {
         if(Sd2[nrow(Sd2), inr_variable] >= inr_min & Sd2[nrow(Sd2), inr_variable] <= inr_max) {
           Sd2[nrow(Sd2) + 1, 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), time_variable]
         } else {Sd2[nrow(Sd2) + 1, 'days_in_therapeutic_range'] <- 0}
-      } else if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] == Sd2[nrow(Sd2), 'D']) {
+      } else if(is.na(Sd2[nrow(Sd2), 'days_in_therapeutic_range'])) {
+    if(Sd2[nrow(Sd2) - 1, inr_variable] >= inr_min & Sd2[nrow(Sd2) - 1, inr_variable] <= inr_max) {
+      Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2) - 1, time_variable]
+    } else {Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- 0}
+  } else if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] == Sd2[nrow(Sd2), 'D']) {
         Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- Sd2[nrow(Sd2), 'D'] - (Sd2[nrow(Sd2), time_variable] - day)
       } else if(Sd2[nrow(Sd2) - 1, inr_variable] >= inr_min & Sd2[nrow(Sd2) - 1, inr_variable] <= inr_max) {
         if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] > day - Sd2[nrow(Sd2) - 1, time_variable]) {
@@ -214,11 +218,15 @@ ttr.calc = function (day, ttr_interval, inr_min, inr_max, patient_id, data, inr_
         } else if(Sd2[2, time_variable] - Sd2[2, 'days_in_therapeutic_range'] - Sd2[2, 'days_out_of_range_on_high_end'] < day - ttr_interval) {
           Sd2[2, 'days_in_therapeutic_range'] <- Sd2[2, time_variable] - Sd2[2, 'days_out_of_range_on_high_end'] - day + ttr_interval
         }}
-      if(Sd1[nrow(Sd1), 'rank'] == Sd2[nrow(Sd2), 'rank'] | is.na(Sd2[nrow(Sd2), 'days_in_therapeutic_range'])) {
+      if(Sd1[nrow(Sd1), 'rank'] == Sd2[nrow(Sd2), 'rank']) {
         if(Sd2[nrow(Sd2), inr_variable] >= inr_min & Sd2[nrow(Sd2), inr_variable] <= inr_max) {
           Sd2[nrow(Sd2) + 1, 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2), time_variable]
         } else {Sd2[nrow(Sd2) + 1, 'days_in_therapeutic_range'] <- 0}
-      } else if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] == Sd2[nrow(Sd2), 'D']) {
+      } else if(is.na(Sd2[nrow(Sd2), 'days_in_therapeutic_range'])) {
+    if(Sd2[nrow(Sd2) - 1, inr_variable] >= inr_min & Sd2[nrow(Sd2) - 1, inr_variable] <= inr_max) {
+      Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- day - Sd2[nrow(Sd2) - 1, time_variable]
+    } else {Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- 0}
+  } else if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] == Sd2[nrow(Sd2), 'D']) {
         Sd2[nrow(Sd2), 'days_in_therapeutic_range'] <- Sd2[nrow(Sd2), 'D'] - (Sd2[nrow(Sd2), time_variable] - day)
       } else if(Sd2[nrow(Sd2) - 1, inr_variable] >= inr_min & Sd2[nrow(Sd2) - 1, inr_variable] <= inr_max) {
         if(Sd2[nrow(Sd2), 'days_in_therapeutic_range'] > day - Sd2[nrow(Sd2) - 1, time_variable]) {
