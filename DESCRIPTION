@@ -1,6 +1,6 @@
 Package: ttrjl
 Title: Converts INR Values to TTR
-Version: 1.0
+Version: 1.1
 Authors@R: 
     person(given = "Joonas",
            family = "Lehto",
