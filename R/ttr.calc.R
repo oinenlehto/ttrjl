@@ -1,6 +1,6 @@
 #' Converts INR Values to TTR
 #'
-#' This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.
+#' This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'. If the patient is not included in the INR data a value '888' will return.
 #' @usage ttr.calc(day, ttr_interval, inr_min, inr_max,
 #' patient_id, data, inr_variable, time_variable, id_variable,
 #' print_number_of_inr_values = FALSE, print_matrix1 = FALSE,
@@ -273,4 +273,4 @@ return(data.frame(TTR, number_of_INR_values))
 }
 if(print_number_of_inr_values == FALSE){
   return(TTR)
-}} else {TTR <- 999}}}
+}} else {TTR <- 888}}}
