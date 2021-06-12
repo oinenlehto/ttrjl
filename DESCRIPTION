@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jojuleh@utu.fi",
            comment = c(ORCID = "0000-0002-6420-8607"))
-Description: This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.
+Description: This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.  If the patient is not included in the INR data a value '888' will return.
 License: MIT + file LICENSE
 Imports: dplyr
 Encoding: UTF-8
