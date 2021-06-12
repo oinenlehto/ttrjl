@@ -35,7 +35,7 @@ print_matrix2 = FALSE)
 \item{print_matrix2}{If TRUE, will print the aforementioned matrix for the desired time interval in which the first and last time in therapeutic range values are recalculated for the TTR calculation. The default is FALSE.}
 }
 \description{
-This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.
+This function converts INR (International Normalized Ratio) values to TTR (Time in Therapeutic Range) for the desired time and interval. The TTR values are calculated via the Rosendaal method (1). Any time periods exceeding the specified TTR interval from the previous measured INR value return '999'.  If the patient is not included in the INR data a value '888' will return.
 }
 \examples{
 ##Not run:
