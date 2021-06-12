@@ -267,10 +267,21 @@ if(print_matrix1 == TRUE) {
 if(print_matrix2 == TRUE) {
   return(Sd2)
 }
-if(print_number_of_inr_values == TRUE){
+if(print_number_of_inr_values == TRUE) {
 number_of_INR_values <- nrow(Sd1)
 return(data.frame(TTR, number_of_INR_values))
 }
-if(print_number_of_inr_values == FALSE){
+if(print_number_of_inr_values == FALSE) {
   return(TTR)
-}} else {TTR <- 888}}}
+}} else {
+    TTR <- 888
+    if(print_matrix1 == TRUE | print_matrix2 == TRUE) {
+      return(S)
+    }
+    if(print_number_of_inr_values == TRUE) {
+      number_of_INR_values <- 888
+      return(data.frame(TTR, number_of_INR_values))
+    }
+    if(print_number_of_inr_values == FALSE){
+      return(TTR)
+}}}}
