@@ -96,10 +96,11 @@ if(!(nrow(S) == 1)) { for(i in x) {
 
 # Creating variable 'days_in_therapeutic_range' containing the number of days in INR target during the interval
 S$days_in_therapeutic_range[S$rank == '1'] <- 0
-for(i in x) {
-  if(nrow(S) == 1) {
+if(nrow(S) == 1) {
     S[1, 'days_in_therapeutic_range'] <- 0
-  } else {if(S[i, 'days_out_of_range_on_low_end'] < 0 & S[i, 'days_out_of_range_on_high_end'] < 0) {
+  } else {
+for(i in x) {
+  if(S[i, 'days_out_of_range_on_low_end'] < 0 & S[i, 'days_out_of_range_on_high_end'] < 0) {
     S[i, 'days_in_therapeutic_range'] <- S[i, 'D']
   } else if(S[i, 'days_out_of_range_on_low_end'] < 0) {
     S[i, 'days_in_therapeutic_range'] <- S[i, 'D'] - S[i, 'days_out_of_range_on_high_end']
@@ -113,8 +114,8 @@ for(i in x) {
   }
   if((S[i, time_variable] - S[i-1, time_variable]) > ttr_interval) {
     S[i, 'days_in_therapeutic_range'] <- NA
-  }}
-}
+  }
+}}
 
 # Creating the matrix Sd1 containing the INR values during the e.g. 60 d interval before the time 'd' and Sd2 containing also values before and after the interval
 Sd1 <- subset(S, S[, time_variable] <= day & S[, time_variable] >= day - ttr_interval)
