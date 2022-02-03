@@ -121,7 +121,7 @@ for(i in x) {
 Sd1 <- subset(S, S[, time_variable] <= day & S[, time_variable] >= day - ttr_interval)
 Sd2 <- subset(S, S$rank <= Sd1[nrow(Sd1), 'rank'] + 1 & S$rank >= Sd1[1, 'rank'] - 1)
 
-# Calculating the 60 d TTR for a specified day
+# Calculating the TTR of a length of ttr_interval for a specified day
 if(day >= S[nrow(S), time_variable] + ttr_interval) {
   TTR <- 999
 } else if(day < S[1, time_variable] + ttr_interval) {
